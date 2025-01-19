@@ -5,9 +5,9 @@ namespace GerenciadorDeTarefas.Application.UseCases.Tarefas;
 
 public class RegistrarTarefaUseCase
 {
-    public ResponseRegistrarTarefa Execute(RequestRegistrarTarefasJson request)
+    public ResponseRegistrarTarefaJson Execute(RequestRegistrarTarefasJson request)
     {
-        return new ResponseRegistrarTarefa
+        return new ResponseRegistrarTarefaJson
         {
             Id = request.Id,
             Titulo = request.Titulo,

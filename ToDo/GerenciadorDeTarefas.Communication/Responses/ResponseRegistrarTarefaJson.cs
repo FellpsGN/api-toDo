@@ -2,7 +2,7 @@
 
 namespace GerenciadorDeTarefas.Communication.Responses;
 
-public class ResponseRegistrarTarefa
+public class ResponseRegistrarTarefaJson
 {
     public string Id { get; set; }
     public string Titulo { get; set; }
