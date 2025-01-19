@@ -10,7 +10,7 @@ public class TarefasController : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegistrarTarefaJson), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest]
+    [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
     public IActionResult RegistrarTarefa([FromBody] RequestRegistrarTarefasJson request)
     {
         var useCase = new RegistrarTarefaUseCase();
