@@ -6,6 +6,7 @@ using GerenciadorDeTarefas.Communication.Responses;
 
 using Microsoft.AspNetCore.Mvc;
 using GerenciadorDeTarefas.Application.UseCases.Tarefas.GetTarefaById;
+using GerenciadorDeTarefas.Application.UseCases.Tarefas.AtualizarTarefa;
 
 namespace GerenciadorDeTarefas.API.Controllers;
 [Route("api/[controller]")]
@@ -52,4 +53,17 @@ public class TarefasController : ControllerBase
         var response = useCase.Execute(request);
         return NoContent();
     }
+
+    [HttpPut]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
+    public IActionResult AtualizarTarefa([FromRoute] int id, [FromBody] RequestRegistrarTarefasJson request)
+    {
+        var useCase = new AtualizaTarefaUseCase();
+        useCase.Execute(id, request);
+        return NoContent();
+    }
+
+
 }
