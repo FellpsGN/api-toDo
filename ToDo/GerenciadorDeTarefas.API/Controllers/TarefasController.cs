@@ -60,10 +60,19 @@ public class TarefasController : ControllerBase
     [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
     public IActionResult AtualizarTarefa([FromRoute] int id, [FromBody] RequestRegistrarTarefasJson request)
     {
-        var useCase = new AtualizaTarefaUseCase();
+        var useCase = new AtualizaTarefaByIdUseCase();
         useCase.Execute(id, request);
         return NoContent();
     }
 
-
+    [HttpDelete]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult DeletarTarefa(int id)
+    {
+        //var useCase = new AtualizaTarefaUseCase();
+        //useCase.Execute(id);
+        return NoContent();
+    }
 }
