@@ -5,6 +5,7 @@ using GerenciadorDeTarefas.Communication.Requests;
 using GerenciadorDeTarefas.Communication.Responses;
 
 using Microsoft.AspNetCore.Mvc;
+using GerenciadorDeTarefas.Application.UseCases.Tarefas.GetTarefaById;
 
 namespace GerenciadorDeTarefas.API.Controllers;
 [Route("api/[controller]")]
@@ -25,6 +26,21 @@ public class TarefasController : ControllerBase
         }
 
         return NoContent();
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    [ProducesResponseType(typeof(ResponseShortTarefasJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
+    public IActionResult GetTarefaById(int id)
+    {
+        var useCase = new GetTarefaByIdUseCase();
+        var response = useCase.Execute(id);
+        if(response == null)
+        {
+            return NoContent();
+        }
+        return Ok(response);
     }
 
     [HttpPost]
