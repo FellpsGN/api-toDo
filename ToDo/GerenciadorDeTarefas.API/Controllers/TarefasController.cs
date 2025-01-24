@@ -7,6 +7,7 @@ using GerenciadorDeTarefas.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 using GerenciadorDeTarefas.Application.UseCases.Tarefas.GetTarefaById;
 using GerenciadorDeTarefas.Application.UseCases.Tarefas.AtualizarTarefa;
+using GerenciadorDeTarefas.Application.UseCases.Tarefas.DeletarTarefa;
 
 namespace GerenciadorDeTarefas.API.Controllers;
 [Route("api/[controller]")]
@@ -71,8 +72,8 @@ public class TarefasController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult DeletarTarefa(int id)
     {
-        //var useCase = new AtualizaTarefaUseCase();
-        //useCase.Execute(id);
+        var useCase = new DeletarTarefaByIdUseCase();
+        useCase.Execute(id);
         return NoContent();
     }
 }
